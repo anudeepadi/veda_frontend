@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Sanskrit Text';
+  src: url('/fonts/sanskrit.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-sanskrit {
+  font-family: 'Sanskrit Text', serif;
+}
+
+.verse-text {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}

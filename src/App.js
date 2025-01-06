@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { VedaProvider } from './context/VedaContext';
+import Layout from './components/Layout/Layout';
+import ErrorBoundary from './components/Common/ErrorBoundary';
 import './App.css';
+
+// Create a client for react-query
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <VedaProvider>
+          <Layout />
+        </VedaProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 
