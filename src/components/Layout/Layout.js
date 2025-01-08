@@ -4,6 +4,7 @@ import { useVeda } from '../../context/VedaContext';
 import HymnViewer from '../HymnViewer/HymnViewer';
 import Sidebar from '../Sidebar/Sidebar';
 import MeditationGuide from '../Meditation/MeditationGuide';
+import ChatPage from '../Chat/ChatPage';
 import { Spinner } from '../Common/Spinner';
 import { ErrorAlert } from '../Common/ErrorAlert';
 
@@ -41,6 +42,7 @@ const Layout = () => {
               />
               <Route path="/hymn/:mandala/:hymn" element={<HymnViewer />} />
               <Route path="/meditation" element={<MeditationGuide />} />
+              <Route path="/chat" element={<ChatPage />} />
             </Routes>
           )}
         </div>

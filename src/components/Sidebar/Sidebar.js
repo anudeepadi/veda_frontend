@@ -20,12 +20,19 @@ const Sidebar = () => {
         try {
           setLoading(true);
           setError(null);
-          const hymnsData = await safeApis.getAllHymns(selectedMandala);
-          setHymns(hymnsData);
+          const response = await safeApis.getAllHymns(selectedMandala);
+          // Extract hymns from the response
+          if (response?.hymns) {
+            setHymns(response.hymns);
+          } else {
+            setHymns([]);
+            setError('No hymns found for this Mandala');
+          }
           setSelectedHymn('');
         } catch (error) {
           console.error('Error fetching hymns:', error);
-          setError(error.message);
+          setError(error.message || 'Failed to load hymns');
+          setHymns([]);
         } finally {
           setLoading(false);
         }
@@ -96,7 +103,7 @@ const Sidebar = () => {
                 className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               >
                 <option value="">Choose a Hymn</option>
-                {Array.isArray(hymns) && hymns.map((hymn) => (
+                {Array.isArray(hymns) && hymns.length > 0 && hymns.map((hymn) => (
                   <option key={hymn.number} value={hymn.number}>
                     Hymn {hymn.number}
                   </option>

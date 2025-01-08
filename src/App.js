@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { VedaProvider } from './context/VedaContext';
 import Layout from './components/Layout/Layout';
